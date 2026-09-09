@@ -8,6 +8,21 @@ function normalize(s){
   return (s||"").toLowerCase().replace(/[ 　\-ー]/g,"");
 }
 
+function getSearchTerms(drug){
+  return [
+    drug.name,
+    drug.generic,
+    ...(Array.isArray(drug.brands) ? drug.brands : []),
+    ...(Array.isArray(drug.aliases) ? drug.aliases : [])
+  ].filter(Boolean);
+}
+
+function formatDate(value){
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
+  if(!match) return value || "未記録";
+  return `${Number(match[1])}年${Number(match[2])}月${Number(match[3])}日`;
+}
+
 function remember(name){
   let r = JSON.parse(localStorage.getItem("medRecent") || "[]");
   r = [name, ...r.filter(x=>x!==name)].slice(0,5);
@@ -41,7 +56,7 @@ function home(){
       <strong>利用上の注意：</strong><br>
       本ツールはケアマネジメント上の情報整理を補助するツールです。診断、処方、服薬変更、中止等の判断には使用しないでください。実際の対応は医師・薬剤師等に確認し、最新の電子添文を参照してください。
     </div>
-    <div class="foot-note">Version 1.1.0</div>
+    <div class="foot-note">Version 1.2.0</div>
   `;
   bindClickable();
 }
@@ -50,8 +65,10 @@ function searchResults(q){
   const nq=normalize(q);
   if(!nq){home(); return;}
   const hits=drugs.filter(d =>
-    d.aliases.some(a=>normalize(a).includes(nq) || nq.includes(normalize(a))) ||
-    normalize(d.generic).includes(nq)
+    getSearchTerms(d).some(term => {
+      const normalized = normalize(term);
+      return normalized.includes(nq) || nq.includes(normalized);
+    })
   );
   if(!hits.length){
     main.innerHTML = `
@@ -121,9 +138,9 @@ function showDrug(id){
     </div>
 
     <section class="source">
-      <div class="source-title">情報源：PMDA 電子添文</div>
-      <p>${d.updated}。本ツールでは情報をケアマネ向けに要約しています。</p>
-      <a href="${d.source}" target="_blank" rel="noopener noreferrer">PMDAの公式情報を開く ↗</a>
+      <div class="source-title">情報源：${escapeHtml(d.source.type)} 電子添文</div>
+      <p>${escapeHtml(d.source.revision)}／情報確認日：${formatDate(d.source.checkedAt)}。本ツールでは情報をケアマネ向けに要約しています。</p>
+      <a href="${escapeHtml(d.source.url)}" target="_blank" rel="noopener noreferrer">PMDAの公式情報を開く ↗</a>
     </section>
 
     <div class="disclaimer">
@@ -163,7 +180,7 @@ search.addEventListener("input", e=>{
 search.addEventListener("keydown", e=>{
   if(e.key==="Enter"){
     const q=normalize(search.value);
-    const exact=drugs.find(d=>d.aliases.some(a=>normalize(a)===q) || normalize(d.generic)===q);
+    const exact=drugs.find(d=>getSearchTerms(d).some(term=>normalize(term)===q));
     if(exact) showDrug(exact.id);
   }
 });
@@ -189,7 +206,7 @@ async function init() {
     const response = await fetch("./drugs.json", { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
-    if (!data || !Array.isArray(data.drugs)) throw new Error("invalid drugs.json");
+    if (!data || data.schemaVersion !== 2 || !Array.isArray(data.drugs)) throw new Error("invalid drugs.json");
     drugs = data.drugs;
     home();
   } catch (error) {
