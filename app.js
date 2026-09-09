@@ -41,7 +41,7 @@ function home(){
       <strong>利用上の注意：</strong><br>
       本ツールはケアマネジメント上の情報整理を補助するツールです。診断、処方、服薬変更、中止等の判断には使用しないでください。実際の対応は医師・薬剤師等に確認し、最新の電子添文を参照してください。
     </div>
-    <div class="foot-note">Version 1.0.0</div>
+    <div class="foot-note">Version 1.1.0</div>
   `;
   bindClickable();
 }
