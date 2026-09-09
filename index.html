@@ -155,7 +155,7 @@
 <body>
 <div class="app">
   <header>
-    <div class="eyebrow">ケアマネ向け・薬剤クイックメモ（試作版）</div>
+    <div class="eyebrow">ケアマネ向け・薬剤クイックメモ</div>
     <h1>この薬、なに？</h1>
     <div class="search-wrap">
       <span class="icon">⌕</span>
@@ -263,8 +263,8 @@ function remember(name){
 function home(){
   const recent = JSON.parse(localStorage.getItem("medRecent") || "[]");
   main.innerHTML = `
-    <div class="hint">一般名・商品名のどちらでも検索できます。まずは試作登録の5剤です。</div>
-    <div class="section-title">すぐ試せる薬</div>
+    <div class="hint">一般名・商品名のどちらでも検索できます。現在5剤を収録しています。</div>
+    <div class="section-title">収録薬</div>
     <div class="chips">
       ${drugs.map(d=>`<button class="chip" data-name="${d.name}">${d.name}</button>`).join("")}
     </div>
@@ -284,10 +284,10 @@ function home(){
         を優先して表示します。
       </div>`}
     <div class="disclaimer">
-      <strong>試作版について：</strong><br>
-      本ツールはケアマネジメント上の情報整理を補助する試作品です。診断、処方、服薬変更、中止等の判断には使用しないでください。実際の対応は医師・薬剤師等に確認し、最新の電子添文を参照してください。
+      <strong>利用上の注意：</strong><br>
+      本ツールはケアマネジメント上の情報整理を補助するツールです。診断、処方、服薬変更、中止等の判断には使用しないでください。実際の対応は医師・薬剤師等に確認し、最新の電子添文を参照してください。
     </div>
-    <div class="foot-note">PWA v1.0</div>
+    <div class="foot-note">Version 1.0.0</div>
   `;
   bindClickable();
 }
@@ -302,9 +302,9 @@ function searchResults(q){
   if(!hits.length){
     main.innerHTML = `
       <div class="empty">
-        <strong>「${escapeHtml(q)}」は試作データに未登録です。</strong><br><br>
-        現在は5剤だけ登録しています。<br>
-        本番版ではここを大幅に増やす想定です。
+        <strong>「${escapeHtml(q)}」は現在の収録データに未登録です。</strong><br><br>
+        現在は5剤を収録しています。<br>
+        収録薬は順次拡充していきます。
       </div>`;
     return;
   }
@@ -368,7 +368,7 @@ function showDrug(id){
 
     <section class="source">
       <div class="source-title">情報源：PMDA 電子添文</div>
-      <p>${d.updated}。この試作では情報をケアマネ向けに要約しています。</p>
+      <p>${d.updated}。本ツールでは情報をケアマネ向けに要約しています。</p>
       <a href="${d.source}" target="_blank" rel="noopener noreferrer">PMDAの公式情報を開く ↗</a>
     </section>
 
