@@ -5,5 +5,6 @@
 - GitHub Pages: https://takarainko-svg.github.io/kono-kusuri-nani/
 - PC / Androidでインストール可能
 - Service Workerによるオフライン利用に対応
+- PMDA電子添文をもとに、ケアマネ向けの観察ポイントを中心に要約
 
-現在は試作版として薬剤5剤を収録しています。
+現在は薬剤5剤を収録しています。薬剤情報は診断・処方・服薬変更・中止の判断を目的としたものではありません。
