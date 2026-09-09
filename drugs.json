@@ -1,15 +1,16 @@
 {
-  "schemaVersion": 1,
-  "appVersion": "1.1.0",
+  "schemaVersion": 2,
+  "appVersion": "1.2.0",
   "drugs": [
     {
       "id": "amlodipine",
       "name": "アムロジピン",
       "generic": "アムロジピンベシル酸塩",
-      "aliases": [
-        "アムロジピン",
+      "brands": [
         "ノルバスク",
-        "アムロジン",
+        "アムロジン"
+      ],
+      "aliases": [
         "amlodipine"
       ],
       "className": "持続性Ca拮抗薬（降圧薬）",
@@ -43,16 +44,26 @@
         "脈が極端に遅い、失神するなどの変化がないか",
         "筋肉痛・強い脱力、黄疸など普段と違う症状がないか"
       ],
-      "updated": "2026年6月改訂版を参照",
-      "source": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/2171022F1134_1?user=1"
+      "source": {
+        "type": "PMDA",
+        "url": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/2171022F1134_1?user=1",
+        "revision": "2026年6月改訂",
+        "checkedAt": "2026-09-09"
+      },
+      "record": {
+        "createdAt": "2026-09-09",
+        "updatedAt": "2026-09-09",
+        "version": 1
+      }
     },
     {
       "id": "furosemide",
       "name": "フロセミド",
       "generic": "フロセミド",
+      "brands": [
+        "ラシックス"
+      ],
       "aliases": [
-        "フロセミド",
-        "ラシックス",
         "furosemide"
       ],
       "className": "ループ利尿薬",
@@ -90,16 +101,26 @@
         "ふらつき・立ちくらみ・転倒",
         "筋けいれん、強いだるさ、ぼんやりするなど電解質異常を疑う変化"
       ],
-      "updated": "2026年2月改訂版を参照",
-      "source": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/2139005F1117_1?user=1"
+      "source": {
+        "type": "PMDA",
+        "url": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/2139005F1117_1?user=1",
+        "revision": "2026年2月改訂",
+        "checkedAt": "2026-09-09"
+      },
+      "record": {
+        "createdAt": "2026-09-09",
+        "updatedAt": "2026-09-09",
+        "version": 1
+      }
     },
     {
       "id": "zolpidem",
       "name": "ゾルピデム",
       "generic": "ゾルピデム酒石酸塩",
+      "brands": [
+        "マイスリー"
+      ],
       "aliases": [
-        "ゾルピデム",
-        "マイスリー",
         "zolpidem"
       ],
       "className": "睡眠薬",
@@ -135,16 +156,26 @@
         "せん妄・混乱・幻覚など普段と違う精神状態",
         "服薬時刻が就寝直前になっているか"
       ],
-      "updated": "2026年2月改訂版を参照",
-      "source": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/1129009F1378_1?user=1"
+      "source": {
+        "type": "PMDA",
+        "url": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/1129009F1378_1?user=1",
+        "revision": "2026年2月改訂",
+        "checkedAt": "2026-09-09"
+      },
+      "record": {
+        "createdAt": "2026-09-09",
+        "updatedAt": "2026-09-09",
+        "version": 1
+      }
     },
     {
       "id": "edoxaban",
       "name": "エドキサバン",
       "generic": "エドキサバントシル酸塩水和物",
+      "brands": [
+        "リクシアナ"
+      ],
       "aliases": [
-        "エドキサバン",
-        "リクシアナ",
         "lixiana",
         "edoxaban"
       ],
@@ -184,16 +215,26 @@
         "服薬の自己中断や飲み忘れが増えていないか",
         "受診・歯科治療・手術予定時に抗凝固薬服用が共有されているか"
       ],
-      "updated": "2025年11月改訂版を参照",
-      "source": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/3339002F1020_1?user=1"
+      "source": {
+        "type": "PMDA",
+        "url": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/3339002F1020_1?user=1",
+        "revision": "2025年11月改訂",
+        "checkedAt": "2026-09-09"
+      },
+      "record": {
+        "createdAt": "2026-09-09",
+        "updatedAt": "2026-09-09",
+        "version": 1
+      }
     },
     {
       "id": "sennoside",
       "name": "センノシド",
       "generic": "センノシドA・Bカルシウム塩",
+      "brands": [
+        "プルゼニド"
+      ],
       "aliases": [
-        "センノシド",
-        "プルゼニド",
         "sennoside",
         "senna"
       ],
@@ -223,8 +264,17 @@
         "毎日長期間使い続ける状態になっていないか",
         "強いだるさや筋力低下など電解質異常を疑う変化"
       ],
-      "updated": "2026年6月改訂版を参照",
-      "source": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/2354003F2340_3?user=1"
+      "source": {
+        "type": "PMDA",
+        "url": "https://www.pmda.go.jp/PmdaSearch/rdDetail/iyaku/2354003F2340_3?user=1",
+        "revision": "2026年6月改訂",
+        "checkedAt": "2026-09-09"
+      },
+      "record": {
+        "createdAt": "2026-09-09",
+        "updatedAt": "2026-09-09",
+        "version": 1
+      }
     }
   ]
 }
