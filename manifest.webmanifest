@@ -3,6 +3,7 @@
   "short_name": "この薬、なに？",
   "description": "ケアマネ向け薬剤クイックメモ",
   "lang": "ja",
+  "id": "./",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
